@@ -17,7 +17,7 @@ export default function CryptoList() {
             setFilteredData(data)
             setLoading(false);
         }
-        
+
         loadData();
     }, []);
 
@@ -37,6 +37,7 @@ export default function CryptoList() {
             {filteredData.map((coin) => (
                 <AssetCard
                     key={coin.id}
+                    id={coin.id}
                     name={coin.name}
                     symbol={coin.symbol}
                     price={coin.current_price}

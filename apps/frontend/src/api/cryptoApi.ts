@@ -13,3 +13,11 @@ export async function fetchCryptoData() {
         return [];
     }
 }
+
+export async function fetchCryptoById(id: string) {
+    const res = await fetch(`https://api.coingecko.com/api/v3/coins/${id}`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch coin details");
+    }
+    return await res.json();
+  }

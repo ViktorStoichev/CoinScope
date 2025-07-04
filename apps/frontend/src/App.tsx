@@ -1,13 +1,17 @@
-import Header from "./components/Header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AssetPage from "./pages/AssetPage";
 import Dashboard from "./pages/Dashboard";
+import HomePage from "./pages/HomePage";
 
-function App() {
-  return (
-    <div className="min-h-screen bg-gray-100">
-      <Header />
-      <Dashboard />
-    </div>
+export default function App() {
+  return (<>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/asset/:id" element={<AssetPage />} />
+      </Routes>
+    </Router>
+  </>
   );
 }
-
-export default App;
