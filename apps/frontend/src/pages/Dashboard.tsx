@@ -5,11 +5,19 @@ import CryptoList from "../components/CryptoList";
 import StockList from "../components/StockList";
 
 export default function Dashboard() {
-    const { filter, setFilter } = useAssetStore();
+    const { filter, setFilter, search, setSearch } = useAssetStore();
 
     return (
         <div className="p-4">
             <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
+
+            <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search assets..."
+                className="px-4 py-2 border rounded mb-4 w-full"
+            />
 
             <div className="flex gap-2 mb-6">
                 <button
