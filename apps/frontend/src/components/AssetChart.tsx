@@ -5,9 +5,8 @@ type Props = {
 };
 
 export default function AssetChart({ data }: Props) {
-  console.log(data)
   return (
-    <div className="w-full h-64">
+    <div className="w-full h-64 bg-white dark:bg-gray-800 rounded-2xl shadow p-4">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
           <XAxis dataKey="time" />

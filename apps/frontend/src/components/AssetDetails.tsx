@@ -33,9 +33,9 @@ export default function AssetPage() {
 
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">{asset.name} ({asset.symbol.toUpperCase()})</h1>
-      <p className="mb-4 text-lg">Current price: ${asset.price?.toLocaleString()}</p>
+    <div className="p-4 max-w-3xl mx-auto">
+      <h1 className="text-3xl font-bold mb-2">{asset.name} ({asset.symbol.toUpperCase()})</h1>
+      <p className="mb-6 text-xl text-gray-600">Current price: ${asset.market_data.current_price.usd.toLocaleString()}</p>
       <AssetChart data={demoChartData} />
     </div>
   );
