@@ -19,5 +19,6 @@ export async function fetchCryptoById(id: string) {
     if (!res.ok) {
       throw new Error("Failed to fetch coin details");
     }
-    return await res.json();
+    const result = await res.json();
+    return result;
   }
