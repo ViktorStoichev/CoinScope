@@ -18,7 +18,7 @@ export default function AboutPage() {
       <p className="mb-4 text-lg">
         <span className="font-semibold">CoinScope</span> is suitable for both beginners and advanced users who want to quickly and conveniently monitor the cryptocurrency market.
       </p>
-      <div className="mt-8 text-center">
+      <div className="mt-12 text-center">
         <span className="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-6 py-2 rounded-full shadow-lg font-semibold text-lg animate-bounce">Thank you for using CoinScope!</span>
       </div>
     </div>
