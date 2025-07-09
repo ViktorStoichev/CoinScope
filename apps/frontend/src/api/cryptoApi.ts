@@ -1,24 +1,24 @@
+const BASE_URL = "https://express-api-server-6ugj.onrender.com/coinscope"; // смени с реалния адрес
+
 export async function fetchCryptoData() {
-    try {
-        const response = await fetch(
-            "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false"
-        );
-        if (!response.ok) {
-            throw new Error("Failed to fetch crypto data");
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error(error);
-        return [];
-    }
+    const res = await fetch(`${BASE_URL}/all`);
+    if (!res.ok) throw new Error("Failed to fetch coins");
+    return await res.json();
 }
 
 export async function fetchCryptoById(id: string) {
-    const res = await fetch(`https://api.coingecko.com/api/v3/coins/${id}`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch coin details");
-    }
-    const result = await res.json();
-    return result;
-  }
+    const res = await fetch(`${BASE_URL}/${id}`);
+    if (!res.ok) throw new Error("Failed to fetch coin details");
+    return await res.json();
+}
+
+export async function fetchCryptoHistory(id: string, period: "1d" | "7d" | "30d" | "1y") {
+    let endpoint = "";
+    if (period === "1d") endpoint = "history/hourly";
+    if (period === "7d") endpoint = "history/7d";
+    if (period === "30d") endpoint = "history/30d";
+    if (period === "1y") endpoint = "history/1y";
+    const res = await fetch(`${BASE_URL}/${id}/${endpoint}`);
+    if (!res.ok) throw new Error("Failed to fetch history");
+    return await res.json(); // масив от { priceUsd, time, ... }
+}
