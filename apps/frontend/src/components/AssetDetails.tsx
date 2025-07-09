@@ -91,8 +91,18 @@ export default function AssetDetails() {
             <span className="bg-gray-100 rounded px-3 py-1 shadow">24h Volume: <span className="font-bold text-gray-800">${Number(asset.volumeUsd24Hr).toLocaleString()}</span></span>
             <span className="bg-gray-100 rounded px-3 py-1 shadow">Supply: <span className="font-bold text-gray-800">{Number(asset.supply).toLocaleString()}</span></span>
             <span className="bg-gray-100 rounded px-3 py-1 shadow">Rank: <span className="font-bold text-gray-800">#{asset.rank}</span></span>
-            {asset.explorer && <a href={asset.explorer} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline ml-2">Explorer</a>}
           </div>
+          {asset.explorer && (
+            <a
+              href={asset.explorer}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex justify-center items-center px-6 py-2 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-white font-semibold shadow hover:scale-105 hover:-translate-y-1 hover:shadow-lg transition-transform duration-300 ease-in-out mt-6 mx-auto text-center"
+              title="Open Explorer"
+            >
+              Explorer
+            </a>
+          )}
         </div>
       </div>
       <div className="mb-8">
