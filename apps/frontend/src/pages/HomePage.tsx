@@ -8,7 +8,7 @@ export default function HomePage() {
       <img
         src="https://media.lordicon.com/icons/wired/flat/299-coins-dollar.svg" // Public domain coin image
         alt="Big Coin"
-        className="w-40 h-40 mb-8 drop-shadow-xl animate-bounce-slow"
+        className="w-80 h-80 mb-8 drop-shadow-xl animate-bounce-slow"
       />
       <h1 className="text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-lg">
         Welcome to CoinScope
