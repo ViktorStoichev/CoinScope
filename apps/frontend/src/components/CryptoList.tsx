@@ -14,7 +14,7 @@ export default function CryptoList() {
         async function loadData() {
             const data = await fetchCryptoData();
             setCryptoData(data);
-            setFilteredData(data)
+            setFilteredData(data);
             setLoading(false);
         }
 
@@ -40,8 +40,8 @@ export default function CryptoList() {
                     id={coin.id}
                     name={coin.name}
                     symbol={coin.symbol}
-                    price={coin.current_price}
-                    image={coin.image}
+                    price={Number(coin.priceUsd)}
+                    image={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
                 />
             ))}
         </div>
