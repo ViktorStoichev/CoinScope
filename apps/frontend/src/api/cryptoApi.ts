@@ -1,4 +1,4 @@
-const BASE_URL = "https://express-api-server-6ugj.onrender.com/coinscope"; // смени с реалния адрес
+const BASE_URL = "http://172.20.10.2:5000/coinscope"; // смени с реалния адрес
 
 export async function fetchCryptoData() {
     const res = await fetch(`${BASE_URL}/all`);
