@@ -10,10 +10,10 @@ export default function Header() {
                 </Link>
                 <nav className="flex gap-6">
                     <Link
-                        to="/"
+                        to="/catalog"
                         className={`text-lg font-medium transition-colors duration-200 px-2 py-1 rounded-md hover:bg-white/20 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/60 ${location.pathname === "/" ? "bg-white/20 text-white" : "text-white/80"}`}
                     >
-                        Home
+                        Coins
                     </Link>
                     <Link
                         to="/about"
