@@ -1,37 +1,38 @@
 import { useEffect, useState } from "react";
-import { fetchCryptoData } from "../api/cryptoApi";
 import AssetCard from "./AssetCard";
 import Loader from "./Loader";
 import { useAssetStore } from "../store/useAssetStore";
 
 const PAGE_SIZE = 12;
 
-export default function CryptoList() {
+type CryptoListProps = {
+  coins: any[];
+};
+
+export default function CryptoList({ coins }: CryptoListProps) {
     const { search } = useAssetStore();
-    const [cryptoData, setCryptoData] = useState<any[]>([]);
     const [filteredData, setFilteredData] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-        async function loadData() {
-            const data = await fetchCryptoData();
-            setCryptoData(data);
-            setFilteredData(data);
+        if (coins && coins.length > 0) {
+            setFilteredData(coins);
             setLoading(false);
+        } else {
+            setLoading(true);
         }
-        loadData();
-    }, []);
+    }, [coins]);
 
     useEffect(() => {
         setFilteredData(
-            cryptoData.filter((asset) =>
+            coins.filter((asset) =>
                 asset.name.toLowerCase().includes(search.toLowerCase()) ||
                 asset.symbol.toLowerCase().includes(search.toLowerCase())
             )
         );
         setPage(1); // Reset to first page on search
-    }, [search, cryptoData]);
+    }, [search, coins]);
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
