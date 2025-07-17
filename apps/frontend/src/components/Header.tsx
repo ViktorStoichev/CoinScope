@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Header() {
+function Header() {
     const location = useLocation();
     return (
         <header className="w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg sticky top-0 z-50 transition-all duration-300">
@@ -26,3 +27,5 @@ export default function Header() {
         </header>
     );
 }
+
+export default memo(Header);

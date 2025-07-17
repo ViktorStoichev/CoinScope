@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AssetPage from "./pages/AssetPage";
 import HomePage from "./pages/HomePage";
@@ -9,7 +9,7 @@ import CatalogPage from "./pages/CatalogPage";
 import { useAssetStore } from "./store/useAssetStore";
 import { fetchCryptoData } from "./api/cryptoApi";
 
-export default function App() {
+function App() {
   const setCoins = useAssetStore((state) => state.setCoins);
   const coins = useAssetStore((state) => state.coins);
 
@@ -36,3 +36,5 @@ export default function App() {
     </Router>
   );
 }
+
+export default memo(App);

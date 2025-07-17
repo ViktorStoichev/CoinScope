@@ -1,14 +1,17 @@
+import React, { useMemo } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 
 type Props = {
   data: { time: string; price: number }[];
 };
 
-export default function AssetChart({ data }: Props) {
+function AssetChart({ data }: Props) {
+  const chartData = useMemo(() => data, [data]);
+
   return (
     <div className="w-full h-[320px] sm:h-[420px] md:h-[540px] bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 rounded-3xl shadow-xl border border-gray-100 p-2 sm:p-4 flex items-center justify-center">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 16, right: 16, left: 4, bottom: 32 }}>
+        <LineChart data={chartData} margin={{ top: 16, right: 16, left: 4, bottom: 32 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           <XAxis
             dataKey="time"
@@ -42,3 +45,5 @@ export default function AssetChart({ data }: Props) {
     </div>
   );
 }
+
+export default React.memo(AssetChart);

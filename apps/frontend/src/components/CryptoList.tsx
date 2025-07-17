@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import AssetCard from "./AssetCard";
 import Loader from "./Loader";
 import { useAssetStore } from "../store/useAssetStore";
@@ -9,7 +9,7 @@ type CryptoListProps = {
     coins: any[];
 };
 
-export default function CryptoList({ coins }: CryptoListProps) {
+function CryptoList({ coins }: CryptoListProps) {
     const { search } = useAssetStore();
     const [filteredData, setFilteredData] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
@@ -38,12 +38,16 @@ export default function CryptoList({ coins }: CryptoListProps) {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [page]);
 
+    const totalPages = useMemo(() => Math.ceil(filteredData.length / PAGE_SIZE), [filteredData.length]);
+    const paginatedData = useMemo(() => filteredData.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE), [filteredData, page]);
+
+    const handlePrev = useCallback(() => setPage(page - 1), [page]);
+    const handleNext = useCallback(() => setPage(page + 1), [page, totalPages]);
+    const handleSetPage = useCallback((i: number) => setPage(i), []);
+
     if (loading) {
         return <Loader />;
     }
-
-    const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
-    const paginatedData = filteredData.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
     return (
         <div>
@@ -72,7 +76,7 @@ export default function CryptoList({ coins }: CryptoListProps) {
                 <div className="flex flex-wrap justify-center items-center gap-1 sm:gap-2 mt-4 sm:mt-6">
                     <button
                         className="px-2 sm:px-3 py-1 sm:py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold disabled:opacity-50 text-sm sm:text-base"
-                        onClick={() => setPage(page - 1)}
+                        onClick={handlePrev}
                         disabled={page === 1}
                     >
                         Prev
@@ -81,14 +85,14 @@ export default function CryptoList({ coins }: CryptoListProps) {
                         <button
                             key={i + 1}
                             className={`px-2 sm:px-3 py-1 sm:py-2 rounded-lg font-semibold transition-colors duration-150 text-sm sm:text-base ${page === i + 1 ? "bg-indigo-500 text-white" : "bg-gray-100 text-gray-700 hover:bg-indigo-100"}`}
-                            onClick={() => setPage(i + 1)}
+                            onClick={() => handleSetPage(i + 1)}
                         >
                             {i + 1}
                         </button>
                     ))}
                     <button
                         className="px-2 sm:px-3 py-1 sm:py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold disabled:opacity-50 text-sm sm:text-base"
-                        onClick={() => setPage(page + 1)}
+                        onClick={handleNext}
                         disabled={page === totalPages}
                     >
                         Next
@@ -98,3 +102,5 @@ export default function CryptoList({ coins }: CryptoListProps) {
         </div>
     );
 }
+
+export default React.memo(CryptoList);

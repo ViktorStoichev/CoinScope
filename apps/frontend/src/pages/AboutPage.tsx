@@ -1,4 +1,6 @@
-export default function AboutPage() {
+import { memo } from "react";
+
+function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto py-8 sm:py-12 px-10 sm:px-4 text-gray-800 animate-fade-in text-center">
       <h1 className="text-2xl sm:text-4xl font-extrabold mb-2 sm:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">About CoinScope</h1>
@@ -24,3 +26,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+export default memo(AboutPage);

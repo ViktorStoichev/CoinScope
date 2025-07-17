@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
     image: string;
 };
 
-export default function AssetCard({ id, name, symbol, price, image }: Props) {
+export default memo(function AssetCard({ id, name, symbol, price, image }: Props) {
     const navigate = useNavigate();
 
     return (
@@ -24,4 +25,4 @@ export default function AssetCard({ id, name, symbol, price, image }: Props) {
             <p className="text-pink-600 font-bold text-base sm:text-2xl mb-1 sm:mb-2 drop-shadow-sm">${price.toLocaleString()}</p>
         </div>
     );
-}
+});

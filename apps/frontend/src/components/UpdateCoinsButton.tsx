@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { fetchCryptoData } from "../api/cryptoApi";
 import { useAssetStore } from "../store/useAssetStore";
 
-export default function UpdateCoinsButton() {
+function UpdateCoinsButton() {
   const setCoins = useAssetStore((state) => state.setCoins);
   const [loading, setLoading] = useState(false);
 
-  const handleUpdate = async () => {
+  const handleUpdate = useCallback(async () => {
     setLoading(true);
     try {
       const data = await fetchCryptoData();
@@ -16,7 +16,7 @@ export default function UpdateCoinsButton() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [setCoins]);
 
   return (
     <div className="flex justify-center mb-2 sm:mb-4">
@@ -25,8 +25,10 @@ export default function UpdateCoinsButton() {
         onClick={handleUpdate}
         disabled={loading}
       >
-        {loading ? "Updating..." : "Up To Date"}
+        {loading ? "Updating..." : "Resfresh Coins Data"}
       </button>
     </div>
   );
 }
+
+export default memo(UpdateCoinsButton);

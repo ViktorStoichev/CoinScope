@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { useAssetStore } from "../store/useAssetStore";
 
-export default function SearchBar() {
+function SearchBar() {
   const { search, setSearch } = useAssetStore();
   return (
     <div className="w-full flex justify-center mb-4 sm:mb-6">
@@ -14,3 +15,5 @@ export default function SearchBar() {
     </div>
   );
 }
+
+export default memo(SearchBar);

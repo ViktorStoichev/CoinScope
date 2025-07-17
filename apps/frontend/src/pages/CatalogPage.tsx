@@ -1,9 +1,10 @@
+import { memo } from "react";
 import SearchBar from "../components/SearchBar";
 import CryptoList from "../components/CryptoList";
 import { useAssetStore } from "../store/useAssetStore";
 import UpdateCoinsButton from "../components/UpdateCoinsButton";
 
-export default function CatalogPage() {
+function CatalogPage() {
   const coins = useAssetStore((state) => state.coins);
 
   return (
@@ -15,3 +16,5 @@ export default function CatalogPage() {
     </div>
   );
 }
+
+export default memo(CatalogPage);

@@ -1,5 +1,5 @@
+import React, { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import AssetChart from "../components/AssetChart";
 import { fetchCryptoById, fetchCryptoHistory } from "../api/cryptoApi";
 import Loader from "../components/Loader";
@@ -11,7 +11,7 @@ const PERIOD_OPTIONS = [
   { label: "1 Year", value: "1y" },
 ];
 
-export default function AssetDetails() {
+function AssetDetails() {
   const { id } = useParams();
   const [asset, setAsset] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -72,6 +72,8 @@ export default function AssetDetails() {
     loadChart();
   }, [id, period]);
 
+  const chartDataMemo = useMemo(() => chartData, [chartData]);
+
   if (loading) return <Loader />;
   if (!asset) return <div>Asset not found.</div>;
 
@@ -120,8 +122,10 @@ export default function AssetDetails() {
             ))}
           </select>
         </div>
-        {chartLoading ? <Loader /> : <AssetChart data={chartData} />}
+        {chartLoading ? <Loader /> : <AssetChart data={chartDataMemo} />}
       </div>
     </div>
   );
 }
+
+export default React.memo(AssetDetails);
