@@ -1,8 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type AssetType = "crypto" | "stocks" | "all";
-
 interface AssetStore {
     search: string;
     setSearch: (search: string) => void;
