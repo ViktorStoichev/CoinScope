@@ -75,8 +75,6 @@ export async function fetchAllCoins(
         const url = withApiKey(`${BASE_URL}/assets`);
         const response = await fetch(url);
         const data = await response.json() as AssetListResponse;
-        // Log the data for debugging
-        console.log('CoinCap data:', data)
         // Send only the coin list, not the timestamp
         reply.header('Access-Control-Allow-Origin', '*').send(data.data);
     } catch (err) {

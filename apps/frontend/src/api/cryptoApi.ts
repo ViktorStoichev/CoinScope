@@ -1,6 +1,6 @@
 // cryptoApi.ts: API utility functions for fetching cryptocurrency data from backend
 // Each function returns data from the CoinScope backend, with error handling
-const BASE_URL = "http://localhost:5000/coinscope"; // Change to production address for deployment
+const BASE_URL = "https://coinscope-nzhp.onrender.com/coinscope"; // Change to production address for deployment
 
 // Fetch all coins data
 export async function fetchCryptoData() {
