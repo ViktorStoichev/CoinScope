@@ -48,7 +48,7 @@ export default function CryptoList({ coins }: CryptoListProps) {
     return (
         <div>
             {paginatedData.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-4">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8 p-4 sm:p-4 min-h-[320px] w-full place-items-center">
                     {paginatedData.map((coin) => (
                         <AssetCard
                             key={coin.id}
@@ -61,17 +61,17 @@ export default function CryptoList({ coins }: CryptoListProps) {
                     ))}
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center min-h-[300px] w-full">
-                    <p className="flex flex-col items-center justify-center text-center text-lg text-indigo-500 font-bold animate-pulse drop-shadow-lg transition-all duration-500">
-                        <span className="text-4xl mb-2">😕</span>
+                <div className="flex flex-col items-center justify-center min-h-[220px] sm:min-h-[320px] w-full">
+                    <p className="flex flex-col items-center justify-center text-center text-base sm:text-lg text-indigo-500 font-bold animate-pulse drop-shadow-lg transition-all duration-500">
+                        <span className="text-2xl sm:text-4xl mb-1 sm:mb-2">😕</span>
                         No coins found!
                     </p>
                 </div>
             )}
             {totalPages > 1 && (
-                <div className="flex justify-center items-center gap-2 mt-6">
+                <div className="flex flex-wrap justify-center items-center gap-1 sm:gap-2 mt-4 sm:mt-6">
                     <button
-                        className="px-3 py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold disabled:opacity-50"
+                        className="px-2 sm:px-3 py-1 sm:py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold disabled:opacity-50 text-sm sm:text-base"
                         onClick={() => setPage(page - 1)}
                         disabled={page === 1}
                     >
@@ -80,14 +80,14 @@ export default function CryptoList({ coins }: CryptoListProps) {
                     {Array.from({ length: totalPages }, (_, i) => (
                         <button
                             key={i + 1}
-                            className={`px-3 py-2 rounded-lg font-semibold transition-colors duration-150 ${page === i + 1 ? "bg-indigo-500 text-white" : "bg-gray-100 text-gray-700 hover:bg-indigo-100"}`}
+                            className={`px-2 sm:px-3 py-1 sm:py-2 rounded-lg font-semibold transition-colors duration-150 text-sm sm:text-base ${page === i + 1 ? "bg-indigo-500 text-white" : "bg-gray-100 text-gray-700 hover:bg-indigo-100"}`}
                             onClick={() => setPage(i + 1)}
                         >
                             {i + 1}
                         </button>
                     ))}
                     <button
-                        className="px-3 py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold disabled:opacity-50"
+                        className="px-2 sm:px-3 py-1 sm:py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold disabled:opacity-50 text-sm sm:text-base"
                         onClick={() => setPage(page + 1)}
                         disabled={page === totalPages}
                     >

@@ -76,28 +76,28 @@ export default function AssetDetails() {
   if (!asset) return <div>Asset not found.</div>;
 
   return (
-    <div className="p-4 max-w-4xl mx-auto animate-fade-in">
-      <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
-        <img src={`https://assets.coincap.io/assets/icons/${asset.symbol.toLowerCase()}@2x.png`} alt={asset.name} className="w-24 h-24 rounded-full shadow-lg border-4 border-white bg-white" />
+    <div className="p-2 sm:p-4 max-w-lg sm:max-w-4xl mx-auto animate-fade-in">
+      <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-4 md:mb-6">
+        <img src={`https://assets.coincap.io/assets/icons/${asset.symbol.toLowerCase()}@2x.png`} alt={asset.name} className="w-16 h-16 sm:w-24 sm:h-24 rounded-full shadow-lg border-4 border-white bg-white" />
         <div className="flex-1">
-          <h1 className="text-4xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+          <h1 className="text-2xl sm:text-4xl font-extrabold mb-1 sm:mb-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
             {asset.name} <span className="uppercase text-gray-500">({asset.symbol})</span>
           </h1>
-          <p className="text-2xl font-semibold text-gray-800 mb-2">
+          <p className="text-lg sm:text-2xl font-semibold text-gray-800 mb-1 sm:mb-2">
             ${Number(asset.priceUsd).toLocaleString()}
           </p>
-          <div className="flex flex-wrap gap-4 text-gray-600 text-base">
-            <span className="bg-gray-100 rounded px-3 py-1 shadow">Market Cap: <span className="font-bold text-gray-800">${Number(asset.marketCapUsd).toLocaleString()}</span></span>
-            <span className="bg-gray-100 rounded px-3 py-1 shadow">24h Volume: <span className="font-bold text-gray-800">${Number(asset.volumeUsd24Hr).toLocaleString()}</span></span>
-            <span className="bg-gray-100 rounded px-3 py-1 shadow">Supply: <span className="font-bold text-gray-800">{Number(asset.supply).toLocaleString()}</span></span>
-            <span className="bg-gray-100 rounded px-3 py-1 shadow">Rank: <span className="font-bold text-gray-800">#{asset.rank}</span></span>
+          <div className="flex flex-wrap gap-2 sm:gap-4 text-gray-600 text-xs sm:text-base">
+            <span className="bg-gray-100 rounded px-2 sm:px-3 py-1 shadow">Market Cap: <span className="font-bold text-gray-800">${Number(asset.marketCapUsd).toLocaleString()}</span></span>
+            <span className="bg-gray-100 rounded px-2 sm:px-3 py-1 shadow">24h Volume: <span className="font-bold text-gray-800">${Number(asset.volumeUsd24Hr).toLocaleString()}</span></span>
+            <span className="bg-gray-100 rounded px-2 sm:px-3 py-1 shadow">Supply: <span className="font-bold text-gray-800">{Number(asset.supply).toLocaleString()}</span></span>
+            <span className="bg-gray-100 rounded px-2 sm:px-3 py-1 shadow">Rank: <span className="font-bold text-gray-800">#{asset.rank}</span></span>
           </div>
           {asset.explorer && (
             <a
               href={asset.explorer}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex justify-center items-center px-6 py-2 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-white font-semibold shadow hover:scale-105 hover:-translate-y-1 hover:shadow-lg transition-transform duration-300 ease-in-out mt-6 mx-auto text-center"
+              className="inline-flex justify-center items-center px-4 sm:px-6 py-2 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-white font-semibold shadow hover:scale-105 hover:-translate-y-1 hover:shadow-lg transition-transform duration-300 ease-in-out mt-4 sm:mt-6 mx-auto text-center text-sm sm:text-base"
               title="Open Explorer"
             >
               Explorer
@@ -105,10 +105,10 @@ export default function AssetDetails() {
           )}
         </div>
       </div>
-      <div className="mb-8">
-        <div className="flex justify-end mb-2">
+      <div className="mb-4 sm:mb-8">
+        <div className="flex justify-end mb-1 sm:mb-2">
           <select
-            className="px-3 py-2 rounded-lg border border-gray-300 shadow focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-white text-gray-700"
+            className="px-2 sm:px-3 py-1 sm:py-2 rounded-lg border border-gray-300 shadow focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-white text-gray-700 text-sm sm:text-base"
             value={period.value}
             onChange={e => {
               const selected = PERIOD_OPTIONS.find(opt => opt.value === e.target.value);

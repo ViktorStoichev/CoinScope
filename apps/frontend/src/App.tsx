@@ -23,7 +23,7 @@ export default function App() {
     <Router>
       <div className="flex flex-col min-h-screen bg-gray-50">
         <Header />
-        <main className="flex-1">
+        <main className="flex-1 w-full">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/asset/:id" element={<AssetPage />} />
