@@ -1,3 +1,4 @@
+// Home page for CoinScope. Shows welcome message and navigation to catalog.
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +7,7 @@ function HomePage() {
 
   return (
     <div className="max-w-3xl mx-auto py-8 sm:py-16 px-2 sm:px-4 flex flex-col items-center text-center">
+      {/* Main coin image and welcome text */}
       <img
         src="https://media.lordicon.com/icons/wired/flat/299-coins-dollar.svg" // Public domain coin image
         alt="Big Coin"
@@ -20,6 +22,7 @@ function HomePage() {
         analytics, and enjoy a beautiful, responsive experience. Start exploring
         the world of crypto now!
       </p>
+      {/* Button to navigate to catalog */}
       <button
         onClick={() => navigate("/catalog")}
         className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-lg sm:text-xl font-bold shadow-lg hover:scale-105 transition-transform duration-200"

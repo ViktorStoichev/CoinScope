@@ -1,18 +1,23 @@
+// AssetChart: Renders a responsive line chart for asset price history
+// Uses recharts for visualization and useMemo for performance
 import React, { useMemo } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 
 type Props = {
-  data: { time: string; price: number }[];
+  data: { time: string; price: number }[]; // Array of time/price points
 };
 
 function AssetChart({ data }: Props) {
+  // Memoize chart data for performance
   const chartData = useMemo(() => data, [data]);
 
   return (
     <div className="w-full h-[320px] sm:h-[420px] md:h-[540px] bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 rounded-3xl shadow-xl border border-gray-100 p-2 sm:p-4 flex items-center justify-center">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData} margin={{ top: 16, right: 16, left: 4, bottom: 32 }}>
+          {/* Grid lines for readability */}
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+          {/* X axis: time labels */}
           <XAxis
             dataKey="time"
             tick={{ fontSize: 8, fill: '#6366f1' }}
@@ -21,17 +26,20 @@ function AssetChart({ data }: Props) {
             interval={0}
             height={60}
           />
+          {/* Y axis: price values */}
           <YAxis
             tick={{ fontSize: 10, fill: '#6366f1' }}
             width={50}
             domain={[dataMin => Math.floor(dataMin * 0.98), dataMax => Math.ceil(dataMax * 1.02)]}
           />
+          {/* Tooltip for interactive data display */}
           <Tooltip
             contentStyle={{ background: '#fff', borderRadius: 12, border: '1px solid #e5e7eb', color: '#111' }}
             labelStyle={{ fontWeight: 700, color: '#6366f1', fontSize: 13 }}
             itemStyle={{ fontWeight: 500, fontSize: 13 }}
             cursor={{ stroke: '#6366f1', strokeWidth: 2, opacity: 0.2 }}
           />
+          {/* Line for price data */}
           <Line
             type="monotone"
             dataKey="price"
@@ -46,4 +54,5 @@ function AssetChart({ data }: Props) {
   );
 }
 
+// Memoize component for performance
 export default React.memo(AssetChart);

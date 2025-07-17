@@ -1,10 +1,14 @@
+// SearchBar: Input field for filtering coins by name or symbol
+// Uses Zustand for global search state and React.memo for performance
 import { memo } from "react";
 import { useAssetStore } from "../store/useAssetStore";
 
 function SearchBar() {
+  // Access global search value and setter from Zustand store
   const { search, setSearch } = useAssetStore();
   return (
     <div className="w-full flex justify-center mb-4 sm:mb-6">
+      {/* Input for search query, updates Zustand store on change */}
       <input
         type="text"
         value={search}
@@ -16,4 +20,5 @@ function SearchBar() {
   );
 }
 
+// Memoize component to avoid unnecessary re-renders
 export default memo(SearchBar);
