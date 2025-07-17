@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AssetPage from "./pages/AssetPage";
-import Dashboard from "./pages/Dashboard";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -27,7 +26,6 @@ export default function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/asset/:id" element={<AssetPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/catalog" element={<CatalogPage />} />

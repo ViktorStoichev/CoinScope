@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Footer() {
   return (
     <footer className="w-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white py-4 mt-8 shadow-inner">

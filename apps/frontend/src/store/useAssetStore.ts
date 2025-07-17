@@ -4,8 +4,6 @@ import { persist } from "zustand/middleware";
 type AssetType = "crypto" | "stocks" | "all";
 
 interface AssetStore {
-    filter: AssetType;
-    setFilter: (filter: AssetType) => void;
     search: string;
     setSearch: (search: string) => void;
     coins: any[];
@@ -15,8 +13,6 @@ interface AssetStore {
 export const useAssetStore = create<AssetStore>()(
   persist(
     (set) => ({
-      filter: "all",
-      setFilter: (filter: AssetType) => set({ filter }),
       search: "",
       setSearch: (search: string) => set({ search }),
       coins: [],
