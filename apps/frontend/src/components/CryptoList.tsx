@@ -6,7 +6,7 @@ import { useAssetStore } from "../store/useAssetStore";
 const PAGE_SIZE = 12;
 
 type CryptoListProps = {
-  coins: any[];
+    coins: any[];
 };
 
 export default function CryptoList({ coins }: CryptoListProps) {
@@ -47,18 +47,27 @@ export default function CryptoList({ coins }: CryptoListProps) {
 
     return (
         <div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-4">
-                {paginatedData.map((coin) => (
-                    <AssetCard
-                        key={coin.id}
-                        id={coin.id}
-                        name={coin.name}
-                        symbol={coin.symbol}
-                        price={Number(coin.priceUsd)}
-                        image={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
-                    />
-                ))}
-            </div>
+            {paginatedData.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-4">
+                    {paginatedData.map((coin) => (
+                        <AssetCard
+                            key={coin.id}
+                            id={coin.id}
+                            name={coin.name}
+                            symbol={coin.symbol}
+                            price={Number(coin.priceUsd)}
+                            image={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div className="flex flex-col items-center justify-center min-h-[300px] w-full">
+                    <p className="flex flex-col items-center justify-center text-center text-lg text-indigo-500 font-bold animate-pulse drop-shadow-lg transition-all duration-500">
+                        <span className="text-4xl mb-2">😕</span>
+                        No coins found!
+                    </p>
+                </div>
+            )}
             {totalPages > 1 && (
                 <div className="flex justify-center items-center gap-2 mt-6">
                     <button
