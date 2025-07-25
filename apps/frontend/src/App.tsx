@@ -25,17 +25,21 @@ function App() {
   return (
     <Router>
       {/* Main layout: header, routed content, footer */}
-      <div className="flex flex-col min-h-screen bg-gray-50">
-        <Header />
-        <main className="flex-1 w-full">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/asset/:id" element={<AssetPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/catalog" element={<CatalogPage />} />
-          </Routes>
-        </main>
-        <Footer />
+      <div className="relative flex flex-col min-h-screen bg-[url('./assets/bck-image/HD-wallpaper-chart-cryptocurrency-black-violet-blue-candlestick-bitcoin.jpg')] bg-cover bg-center bg-no-repeat">
+        {/* Overlay for darkening and blurring the background */}
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0" />
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-1 w-full">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/asset/:id" element={<AssetPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/catalog" element={<CatalogPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </div>
     </Router>
   );
