@@ -12,15 +12,16 @@ function AssetChart({ data }: Props) {
   const chartData = useMemo(() => data, [data]);
 
   return (
-    <div className="w-full h-[320px] sm:h-[420px] md:h-[540px] bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 rounded-3xl shadow-xl border border-gray-100 p-2 sm:p-4 flex items-center justify-center">
+    <div className="w-full h-[320px] sm:h-[420px] md:h-[540px] bg-gray-800 rounded-3xl shadow-xl border border-gray-800 p-2 sm:p-4 flex items-center justify-center">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData} margin={{ top: 16, right: 16, left: 4, bottom: 32 }}>
           {/* Grid lines for readability */}
-          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+          <CartesianGrid strokeDasharray="3 3" stroke="white" />
           {/* X axis: time labels */}
           <XAxis
             dataKey="time"
-            tick={{ fontSize: 8, fill: '#6366f1' }}
+            axisLine={{ stroke: "#6366f1" }}
+            tick={{ fontSize: 8, fill: 'white' }}
             angle={-35}
             textAnchor="end"
             interval={0}
@@ -28,7 +29,8 @@ function AssetChart({ data }: Props) {
           />
           {/* Y axis: price values */}
           <YAxis
-            tick={{ fontSize: 10, fill: '#6366f1' }}
+            axisLine={{ stroke: "#6366f1" }}
+            tick={{ fontSize: 10, fill: 'white' }}
             width={50}
             domain={[dataMin => Math.floor(dataMin * 0.98), dataMax => Math.ceil(dataMax * 1.02)]}
           />

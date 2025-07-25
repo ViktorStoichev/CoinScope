@@ -13,10 +13,10 @@ function HomePage() {
         alt="Big Coin"
         className="w-40 h-40 sm:w-80 sm:h-80 mb-4 sm:mb-8 drop-shadow-xl animate-bounce-slow"
       />
-      <h1 className="text-3xl sm:text-5xl font-extrabold mb-4 sm:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 drop-shadow-lg">
+      <h1 className="text-3xl sm:text-5xl font-extrabold mb-4 sm:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-400 drop-shadow-lg">
         Welcome to CoinScope
       </h1>
-      <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-8 max-w-md sm:max-w-xl">
+      <p className="text-base sm:text-lg text-gray-200 mb-4 sm:mb-8 max-w-md sm:max-w-xl">
         CoinScope is your modern, user-friendly dashboard for tracking
         cryptocurrencies in real time. Browse the full catalog, view detailed
         analytics, and enjoy a beautiful, responsive experience. Start exploring
@@ -25,7 +25,7 @@ function HomePage() {
       {/* Button to navigate to catalog */}
       <button
         onClick={() => navigate("/catalog")}
-        className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white text-lg sm:text-xl font-bold shadow-lg hover:scale-105 transition-transform duration-200"
+        className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-indigo-800 via-purple-900 to-pink-700 text-gray-100 text-lg sm:text-xl font-bold shadow-lg hover:scale-105 transition-transform duration-200"
       >
         Browse Coins
       </button>
