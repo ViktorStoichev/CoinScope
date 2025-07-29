@@ -40,7 +40,7 @@ npm run start
 ---
 
 ## Demo & Deployment
-Friendly demo and live links will be added soon!
+https://coinscope-frontend.onrender.com
 
 ---
 
