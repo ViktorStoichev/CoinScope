@@ -30,7 +30,7 @@ function App() {
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0" />
         <div className="relative z-10 flex flex-col min-h-screen">
           <Header />
-          <main className="flex-1 w-full">
+          <main className="flex-1 w-full min-h-[1420px]">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/asset/:id" element={<AssetPage />} />
