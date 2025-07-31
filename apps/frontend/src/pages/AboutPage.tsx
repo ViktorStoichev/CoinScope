@@ -3,7 +3,7 @@ import { memo } from "react";
 
 function AboutPage() {
   return (
-    <div className="max-w-3xl mx-auto py-8 sm:py-12 px-10 sm:px-4 text-gray-200 animate-fade-in text-center">
+    <div className="max-w-3xl my-10 mx-auto py-8 sm:py-12 px-10 sm:px-4 text-gray-200 animate-fade-in text-center">
       {/* Title and description */}
       <h1 className="text-2xl sm:text-4xl font-extrabold mb-2 sm:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-700">About CoinScope</h1>
       <p className="text-base sm:text-lg mb-4 sm:mb-6 leading-relaxed">
